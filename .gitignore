@@ -1,0 +1,4 @@
+.vscode/
+wireshark_extractor/bin
+wireshark_extractor/lib
+wireshark.*
