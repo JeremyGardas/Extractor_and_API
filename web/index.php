@@ -72,8 +72,8 @@
         */
         private function read_data_from_db() :array
         {
-            $result = $this->db->query("SELECT * FROM wireshark");
-
+            $result = $this->db->query("SELECT * FROM packets");
+                        
             if (! $result) {
                 return array();
             }
@@ -82,7 +82,7 @@
 
             while ($row = $result->fetchArray(SQLITE3_ASSOC))
             {
-                $data[] = $row;
+                $data[] = bin2hex($row["data"]);
             }
 
             return $data;
