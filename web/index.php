@@ -1,4 +1,6 @@
 <?php
+    define("DB_PATH", "../others/db.sqlite");
+
     class API
     {
         private $path_to_database;
@@ -89,5 +91,5 @@
         }
     }
 
-    (new API("../wireshark.sqlite"))->run();
+    (new API(DB_PATH))->run();
 ?>
