@@ -26,8 +26,3 @@ cd web/
 apt install php-sqlite3
 php -S 0.0.0.0:80
 ```
-
-
-
-# **Android App (Java)**
-*Retreive packets from the API and display them using filters*
