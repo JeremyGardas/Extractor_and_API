@@ -13,3 +13,4 @@ public class Main
         System.exit((new Extractor(args[0], args[1])).run() ? 0 : 1);
     }
 }
+
