@@ -1,7 +1,7 @@
 # **Extractor (Java)**
-*Read packets from a Wireshark capture and insert them into a SQLite database*
+*Extract packets from a Wireshark capture and insert them into a database*
 
-* **The SQLite database must be created by yourself**
+* **The database must be created by yourself**
 ```SQL
 CREATE TABLE "packets" (
 	"id"	INTEGER,
