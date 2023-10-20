@@ -1,6 +1,4 @@
 # **Extractor (Java)**
-*Extract packets from a Wireshark capture and insert them into a database*
-
 *Read packets from a Wireshark capture and insert them into a database*
 
 * **The database must be created by yourself**
