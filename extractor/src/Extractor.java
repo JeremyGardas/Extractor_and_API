@@ -151,7 +151,7 @@ public class Extractor
         {
             this.pstmt.executeBatch();
             
-            return true;
+            return false;
         }
         catch (Exception e)
         {
