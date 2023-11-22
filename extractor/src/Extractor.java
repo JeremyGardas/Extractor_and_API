@@ -155,7 +155,7 @@ public class Extractor
         }
         catch (Exception e)
         {
-            return false;
+            return true;
         }
     }
 }
