@@ -25,13 +25,12 @@
             }
 
             header("Content-Type: application/json");
-            
-            try
-            {
+
+            try {
                 /*
                     Open the db.
                 */
-                if (! $this->open_db())
+                if (!$this->open_db())
                 {
                     throw new Exception();
                 }
@@ -39,7 +38,8 @@
                 /*
                     Read data from db.
                 */
-                $data = $this->read_data_from_db();
+                $startIndex = isset($_GET['start']) ? intval($_GET['start']) : 0;
+                $data = $this->read_data_from_db($startIndex);
 
                 /*
                     Display data as JSON.
@@ -57,12 +57,12 @@
             Open the database.
 
             Return - true - in case of success,
-                     false - in case of error.
+                    false - in case of error.
         */
-        private function open_db() :bool
+        private function open_db(): bool
         {
             $this->db = new SQLite3($this->path_to_database);
-            
+
             return $this->db ? true : false;
         }
 
@@ -70,16 +70,18 @@
             Read data from db.
 
             Return - an array containing data - in case of success,
-                     an empty array - in case of error.
+                    an empty array - in case of error.
         */
-        private function read_data_from_db() :array
+        private function read_data_from_db($startIndex): array
         {
-            $result = $this->db->query("SELECT * FROM packets");
-                        
-            if (! $result) {
+            $limit = 50; // Number of items to display at a time
+            $result = $this->db->query("SELECT * FROM packets LIMIT $limit OFFSET $startIndex");
+
+            if (!$result)
+            {
                 return array();
             }
-            
+
             $data = array();
 
             while ($row = $result->fetchArray(SQLITE3_ASSOC))
