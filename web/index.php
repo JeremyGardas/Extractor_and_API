@@ -1,4 +1,5 @@
 <?php
+    // Chemin vers la Base de Donées 
     define("DB_PATH", "../others/db.sqlite");
 
     class API
@@ -6,6 +7,7 @@
         private $path_to_database;
         private $db;
 
+        // Construction classe API
         public function __construct($path_to_database)
         {
             $this->path_to_database = $path_to_database;
@@ -24,6 +26,7 @@
                 exit();
             }
 
+            // Le contenu de la réponse est du type JSON
             header("Content-Type: application/json");
 
             try {
@@ -59,6 +62,7 @@
             Return - true - in case of success,
                     false - in case of error.
         */
+        
         private function open_db(): bool
         {
             $this->db = new SQLite3($this->path_to_database);
@@ -72,9 +76,10 @@
             Return - an array containing data - in case of success,
                     an empty array - in case of error.
         */
+        
         private function read_data_from_db($startIndex): array
         {
-            $limit = 50; // Number of items to display at a time
+            $limit = 50; // Nombre d'éléments à afficher à la fois
             $result = $this->db->query("SELECT * FROM packets LIMIT $limit OFFSET $startIndex");
 
             if (!$result)
